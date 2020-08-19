@@ -1,0 +1,179 @@
+<?php
+
+require 'header.php';
+
+?>
+           <!-- TABLA INICIO -->
+  <div class="container" id="crudEmp">
+             
+  
+   <br />
+   <h3 align="center">Empleado</h3>
+   <br />
+
+   <div class="panel panel-default">
+    <div class="panel-heading">
+     <div class="row">
+      <div class="col-md-6">
+       <h3 class="panel-title">Datos</h3>
+      </div>
+      <div class="col-md-6" align="right">
+       <input type="button" class="btn btn-success btn-xs" @click="openModel" value="Agregar" />
+      </div>
+     </div>
+    </div>
+    <div class="panel-body">
+     <div class="table-responsive">
+      <table class="table table-bordered table-striped">
+       <tr>
+        <th>Segmento</th>
+        <th>Rol</th>
+        <th>Empleado</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+       </tr>
+       <tr v-for="row in allData_Emp">
+       <td>{{ row.segmento }}</td>
+        <td>{{ row.nombre +' '+ row.paterno +' '+ row.materno }}</td>
+        <td><button type="button" name="company" class="btn btn-info btn-xs edit" @click="asingCompany(row)">Rol</button></td>
+        <td><button type="button" name="edit" class="btn btn-primary btn-xs edit" @click="fetchData(row.id_empleado)">Editar</button></td>
+        <td><button type="button" name="delete" class="btn btn-danger btn-xs delete" @click="deleteData(row.id_empleado)">Eliminiar</button></td>
+       </tr>
+      </table>
+     </div>
+    </div>
+
+
+
+
+
+    
+   </div>
+
+
+   <div v-if="myModel">
+    <transition name="model">
+     <div class="modal-mask">
+       <div class="modal-dialog modal-dialog-scrollable">
+        <div class="modal-content">
+         <div class="modal-header">
+          <h4 class="modal-title">{{ dynamicTitle }}</h4>
+          <button type="button" class="close" @click="myModel=false"><span aria-hidden="true">&times;</span></button>
+         </div>
+         <div class="modal-body">
+
+         <div class="card-body">
+
+<!--          <div class="form-group">
+            <label>Empresa</label>
+            <select class='form-control' v-model="company">
+            <option value='0' >Selecciona Empresa</option>
+            <option v-for="rows in allDataComboCompany" v-bind:value='rows.id_empresa'>{{ rows.empresa_nombre }}</option>
+            </select>
+        </div>  -->
+
+        <div class="form-group">
+            <label>Segmento</label>
+            <select class='form-control'  v-model="organization">
+            <option value='0' >Selecciona Segmento</option>
+            <option v-for="rows in allDataCombo" v-bind:value='rows.id_segmento'>{{ rows.nombre }}</option>
+            </select>
+        </div>
+
+          <div class="form-group">
+           <label>Nombre</label>
+           <input type="text" class="form-control" v-model="first_name" />
+          </div>
+          <div class="form-group">
+           <label>Apellido Paterno</label>
+           <input type="text" class="form-control" v-model="paternal_name" />
+          </div>
+          <div class="form-group">
+           <label>Apellido Materno</label>
+           <input type="text" class="form-control" v-model="maternal_name" />
+          </div>
+          <div class="form-group">
+           <label>Telef&oacute;no Celular</label>
+           <input type="tel" class="form-control" v-model="cellphone" />
+          </div> 
+          <div class="form-group">
+           <label>Correo Electronico</label>
+           <input type="email" class="form-control" v-model="emp_email" />
+          </div>
+
+          <div class="form-group">
+           <label>Fecha Nacimiento</label>
+           <input type="date" class="form-control" v-model="age" min="18"/>
+          </div>
+
+          <div class="form-group">
+           <label>G&eacute;nero</label><br>
+            <input type="radio" id="male" name="gender" value="H" v-model="picked">  
+           <label for="male">Hombre</label><br>
+            <input type="radio" id="female" name="gender" value="M" v-model="picked"> 
+            <label for="female">Mujer</label><br>
+           <input type="radio" id="other" name="gender" value="O" v-model="picked">
+            <label for="other">Otro</label><br>
+          </div> 
+
+          <div class="form-group">
+           <label>Usuario</label>
+           <input type="usu" class="form-control" v-model="user" v-bind:disabled="actionButton == 'Agregar' ? true : false" />
+          </div> 
+
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="checked" v-model="checked"  false-value="false" true-value="true" >
+            <label class="custom-control-label" for="checked">Activo</label>
+        </div>
+
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="checked_poll" v-model="checked_poll"  false-value="false" true-value="true" >
+            <label class="custom-control-label" for="checked_poll">Enviar Encuesta</label>
+        </div>
+
+          <br />
+          <div align="center">
+           <input type="hidden" v-model="hiddenId" />
+           <input type="button" class="btn btn-success btn-xs" v-model="actionButton" @click="submitData" />
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+      </div>
+    </transition>
+   </div>
+
+   <div v-if="myModelRol" >  
+            <transition name="model" >
+              <div class="modal-mask" > 
+                      <div class="modal-dialog modal-dialog-scrollable">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h4 class="modal-title">{{ dynamicTitle }}</h4>
+                            <button type="button" class="close" @click="myModelRol=false"><span aria-hidden="true">&times;</span></button>
+                          </div>  
+                          <div class="modal-body"> 
+                            <div class="card-body">   
+                                <div class="custom-control custom-checkbox">
+                                  <h5 >El Usuario cuenta con las siguientes roles:</h5>
+                                  <div v-for="r in companys" >   
+                                        <input style="margin-left:5px;" type='checkbox' v-model=r.selected  :id="'check_' + r.id_rol"  > <span>{{ r.rol }}</span>  
+                                  </div> 
+                                </div>   
+                                <div align="center">
+                                  <input type="hidden" v-model="hiddenId" />
+                                  <input type="button" class="btn btn-success btn-xs" value="Guardar" :disabled='isDisabledSC' @click="saveCompanys()" />
+                                </div>
+                                </br> 
+                            </div>
+                          </div>
+                      </div> 
+                </div>
+              </div>
+            </transition>
+          </div>
+    </div>
+    <!-- End of Content Wrapper -->
+
+<script type="text/javascript" src="../js/admin/employe.js"></script>
