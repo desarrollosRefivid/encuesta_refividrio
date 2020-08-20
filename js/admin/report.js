@@ -1,11 +1,3 @@
-// function generateReport() {
-//     document.getElementById("viewReport").innerHTML =  '<center><iframe src="../php/generate_report.php/verReporte?p_descripciones=0&p_comerciaALL=0&p_imagenes=0" style="width:90%;height:700px;"></iframe></center>'; 
-// }
-// function closeFrameReportView(){
-//     document.getElementById("viewReport").innerHTML = "";
-// }  
-
-
 var report = new Vue({
     el:'#reports',
     data:{ 
@@ -62,15 +54,14 @@ var report = new Vue({
             document.getElementById("bteConsRes").click();
         },
         modifiedContentdiv(){ 
-            document.getElementById("bteConsRes").click();
+            $('.collapse').collapse();
         }, 
         closeFrameReportView(){
             document.getElementById("viewReport").innerHTML = "";
         },
        
     },
-    async mounted() {    
-        
+    async mounted() {     
     },
     created: async function(){  
         this.modifiedContentdiv();  
