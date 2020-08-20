@@ -8,21 +8,17 @@ var login = new Vue({
             let userParam = document.getElementById("user").value;
             let passwordParam = document.getElementById("password").value;
             let rolParam = document.getElementById("rol").value; 
-            this.roles != null && this.roles != '' && rolParam != '' ?  rolParam = this.roles[rolParam]   : rolParam = 0;  
-            
-            try {
-                   
+            this.roles != null && this.roles != '' && rolParam != '' ?  rolParam = this.roles[rolParam]   : rolParam = 0;   
+            try { 
                     const sig = await this.getRols(userParam,passwordParam ,rolParam); 
                     if (sig != null) { 
                             if (sig != "succes")  {  
-                                if (sig.includes("¡Error!")) { 
-                                    console.log("2");
+                                if (sig.includes("¡Error!")) {  
                                     document.getElementById("msg").style.display = "none"; 
                                     document.getElementById("msgErro").innerHTML = sig; 
                                     document.getElementById("msgErro").style.display = "block"; 
                                     document.getElementById("buttonCancel").style.display = "none"; 
-                                }else{ 
-                                    console.log("3");
+                                }else{  
                                     login.roles = sig;
                                     var x = document.getElementById("rol"); 
                                     for (let index = 0; index <  this.roles.length; index++) { 
@@ -32,6 +28,7 @@ var login = new Vue({
                                         x.add(option);
                                         x.style.display = "block"; 
                                     } 
+                                    console.log(sig);
                                     document.getElementById("msg").innerHTML = "Selecciona un Rol"; 
                                     document.getElementById("msg").style.display = "block"; 
                                     document.getElementById("msgErro").style.display = "none";
@@ -62,7 +59,7 @@ var login = new Vue({
         reset(){  location.href="pages/logout.php";   },
         async getRols(userParam,passwordParam,rolParam ){
             if (userParam != '' && passwordParam != '') { 
-               return axios.post("php/login.php", {user:userParam,password:passwordParam,rol:rolParam
+               return axios.post("php/login.php", {action:'login',user:userParam,password:passwordParam,rol:rolParam
                 }).then(function (response) { 
                     return this.roles = response.data;   
                 })
