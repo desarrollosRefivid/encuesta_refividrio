@@ -4,17 +4,19 @@ var app_chagePassword = new Vue({
         modalchagePassword: false,
         pass_old : "",
         pass_new: "",
-        pass_new_repeat:"", 
-        id_empleado: "",
+        pass_new_repeat:"",  
         disables_bte_save: false
     },
     methods:{ 
-        showModal(id){  
-            this.id_empleado = id; 
+        showModal(){   
             this.modalchagePassword= true;this.disables_bte_save = false;
         },
-        async managePassword(){  
-           const isPassword_valid = await axios.post("../../php/login.php", {
+        async managePassword(admin){  
+            let linkComprobate = "../../php/login.php";
+            if (admin) {
+                linkComprobate = "../php/login.php";
+            } 
+           const isPassword_valid = await axios.post(linkComprobate, {
                 action:'comparePassword',password_old:this.pass_old
             }).then(function (response) { 
                 if(response.data == 'contraseña válida'){return true;}else{return false;}; 
@@ -27,10 +29,14 @@ var app_chagePassword = new Vue({
                 if (this.pass_new != '' && this.pass_new_repeat != '') {
                     if (this.pass_new === this.pass_new_repeat) {
                         this.disables_bte_save = true; 
-                       const result = await this.changePassword();
+                       const result = await this.changePassword(admin);
                        if (result == true){  
-                            alert('¡Cambio de contraseña Exitoso!');   
-                            location.href="../logout.php";   
+                            alert('¡Cambio de contraseña Exitoso!');  
+                            let linkLogout= "../logout.php";
+                            if (admin) {
+                                linkLogout = "logout.php";
+                            }  
+                            location.href= linkLogout;   
                         }else
                             alert('La Contraseña NO se puede Actualizar en estos momentos.');  
                     }else{
@@ -40,11 +46,15 @@ var app_chagePassword = new Vue({
                     alert('Ingresa la Nueva cotraseña y su comprobación.');  
                 }
             }  else{
-                alert('La contraseña anterio no coincide.');
+                alert('La contraseña anterior no coincide.');
             }
-        },async changePassword(){
-           return await axios.post("../../php/login.php", {
-                action:'changePassword',password_old:this.pass_old, password_new: this.pass_new , id_empleado:this.id_empleado
+        },async changePassword(admin){
+            let linkComprobate = "../../php/login.php";
+            if (admin) {
+                linkComprobate = "../php/login.php";
+            } 
+            return await axios.post(linkComprobate, {
+                action:'changePassword',password_old:this.pass_old, password_new: this.pass_new 
             }).then(function (response) { 
                 if(response.data == 'Password Updated'){return true;}else{console.log(response.data);return false;}; 
             })
@@ -54,7 +64,7 @@ var app_chagePassword = new Vue({
             });
         } 
     },
-    async mounted() {       },
+    async mounted() {},
     created:function(){ 
         console.log("");
 

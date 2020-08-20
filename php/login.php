@@ -52,7 +52,7 @@ if ($received_data->action == 'changePassword') {
         try {
             if ($received_data->password_new != '') {
                 require_once "postgres.php";  
-                $query = " UPDATE empleado SET  password =  md5('" . $received_data->password_new . "')  WHERE id_empleado= " . $received_data->id_empleado ;
+                $query = " UPDATE empleado SET  password =  md5('" . $received_data->password_new . "')  WHERE id_empleado= " . $_SESSION['id_empleado']  ;
                 $statement = $connect->prepare($query);
                 $statement->execute(); 
                 echo json_encode('Password Updated'); 

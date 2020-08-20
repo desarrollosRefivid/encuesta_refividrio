@@ -3,8 +3,7 @@
     $nombre = ''; $id_empleado = ''; 
     if (isset($_SESSION['rol'])) {
       if ($_SESSION['rol'] == 'user')  {
-        $nombre = $_SESSION['nombre']. ' '. $_SESSION['paterno']; 
-        $id_empleado =  $_SESSION['id_empleado']; 
+        $nombre = $_SESSION['nombre']. ' '. $_SESSION['paterno'];  
       }else{
         header('location: ../');
       } 
@@ -25,10 +24,6 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>   
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.0.0/core.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.9-1/md5.js"></script>
  
 </head>
 
@@ -51,7 +46,7 @@
 <div id='chagePassword_DIV'>     
 
   <li class="nav-item active">
-    <button @click="showModal( <?php  echo $id_empleado;?> )" style="background:none;border:none;" > <a class="nav-link"   >Cambiar Contraseña<span class="sr-only">(current)</span></a></button>
+    <button @click="showModal()" style="background:none;border:none;" > <a class="nav-link"   >Cambiar Contraseña<span class="sr-only">(current)</span></a></button>
   </li>
 
   <div v-if="modalchagePassword" >  
@@ -85,7 +80,7 @@
                             <br/><br/>
                             
                             <div align="center"> 
-                              <input type="button" class="btn btn-success btn-xs" value="Guardar" :disabled="disables_bte_save"  @click="managePassword()" />
+                              <input type="button" class="btn btn-success btn-xs" value="Guardar" :disabled="disables_bte_save"  @click="managePassword(false)" />
                             </div>
                             
                           </div>    
