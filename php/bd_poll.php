@@ -67,16 +67,23 @@ if ($received_data->action == 'fetchSingle') {
 
 session_start();
 if ($received_data->action == 'copy') {
-
-    $query = "SELECT refividrio.copy_poll('" . $received_data->name . "' , " . $received_data->id_encuesta . " , " . $_SESSION['id_empleado'] .
-     ",'" . $received_data->validfrom . "' , '" . $received_data->validUntil . "'  ) as results";
-    $statement = $connect->prepare($query);
-    $statement->execute();
-    $result = $statement->fetchAll();
-    foreach ($result as $row) {
-        $data['results'] = $row['results']; 
+    $query = "";
+    try {
+        $query = "SELECT refividrio.copy_poll('" . $received_data->name . "' , " . $received_data->id_encuesta . " , " . $_SESSION['id_empleado'] .
+        ",'" . $received_data->validfrom . "' , '" . $received_data->validUntil . "'  ) as results";
+    
+       $statement = $connect->prepare($query);
+       $statement->execute();
+       $result = $statement->fetchAll();
+       foreach ($result as $row) {
+           $data['results'] = $row['results']; 
+       }
+       echo json_encode($data);
+    } catch (\Throwable $th) {
+        //throw $th;
+        echo  $th . "  "  ;
     }
-    echo json_encode($data);
+   
 }
   
 
