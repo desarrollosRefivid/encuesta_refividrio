@@ -10,16 +10,16 @@ var report = new Vue({
         empresaSelected: 0,
         segmentSelected: 0,
         pollSelected: 0,
-        typePoolSelected:0
+        typePoolSelected:0,
+        reportSelected: "A"
     },
     methods:{ 
        
-        async getEmployeesBySegment(){ 
-            this.modifiedContentdiv();  
+        async getEmployeesBySegment(){  
             await axios.post("../php/bd_employee.php", {   action:'fetchByDepartament',   id_segmento: this.segmentSelected  })
-            .then(function (response) {  console.log(response.data); report.empleados =  response.data;    })
+            .then(function (response) { report.empleados =  response.data;    })
             .catch(function (response) {    return response.data;  })   ;
-            this.modifiedContentdiv();   
+               
         } 
         ,async getCompanys(){ 
             const response =  await 
@@ -29,45 +29,59 @@ var report = new Vue({
             return response;
             
         },
-         async getSegments(){  
-            this.modifiedContentdiv();  
+         async getSegments(){   
             await 
             axios.post("../php/bd_organization.php", {   action:'fetchaByCompany',   id_empresa: this.empresaSelected,})
             .then(function (response) { report.segments = response.data;})
             .catch(function (response) { report.segments = response.data;  })   ;
-            this.modifiedContentdiv();  
+              
         },
-        async getPools(){
-            this.modifiedContentdiv();  
+        async getPools(){ 
             await axios.post("../php/bd_poll.php", {   action:'fetchByType',   typePoolSelected: this.typePoolSelected,})
-            .then(function (response) { report.pools = response.data;console.log(report.pools);})
-            .catch(function (response) { report.pools = response.data;  }) ;  
-            this.modifiedContentdiv();  
+            .then(function (response) { report.pools = response.data;})
+            .catch(function (response) { report.pools = response.data;  }) ;   
         },  
-        generateReport() { 
-            const url = "../php/generate_report.php/verReporte";
+        generateReport() {  
+            const url = "../php/generate_report.php";
             let params = url ;
             params += "?id_encuesta=" + this.pollSelected;
             params += "&id_empleado=" + this.empleadoSelected;
             params += "&id_segmento=" + this.segmentSelected;  
+            params += "&id_empresa=" + this.empresaSelected;
+            params += "&name_report=" + this.nameReport(this.reportSelected);
+
+            if( this.reportSelected  == 'F'){
+                params += "&realizadas=0"; 
+            }
+            if(this.reportSelected  == 'G'){ 
+                params += "&realizadas=1"; 
+            }
+            params += "&tipo_encuesta=" + this.typePoolSelected; //0 = Todos los tipos de encuestas; 1 : Concluidas; 2 : En captura;
+            console.log(params);
             document.getElementById("viewReport").innerHTML =  '<center><iframe src=' + params +' style="width:90%;height:1150px;"></iframe></center>'; 
             document.getElementById("bteConsRes").click();
         },
-        modifiedContentdiv(){ 
-            $('.collapse').collapse();
-        }, 
+        nameReport(letter){
+            switch (letter) {
+                case 'H':
+                    return 'resultadoEncuesta';
+                case 'F':
+                    return 'resultadoEncuesta_1';
+                case 'G':
+                    return 'resultadoEncuesta_1';
+                default :
+                    return '';   
+            }
+        },
         closeFrameReportView(){
             document.getElementById("viewReport").innerHTML = "";
-        },
-       
+        }, 
     },
     async mounted() {     
     },
-    created: async function(){  
-        this.modifiedContentdiv();  
+    created: async function(){   
         const response = await this.getCompanys(); ///this.getEmployeesBySegment(1);
         await this.getPools();
-        this.companys = response; 
-        this.modifiedContentdiv();  
+        this.companys = response;  
     }
    }); 
