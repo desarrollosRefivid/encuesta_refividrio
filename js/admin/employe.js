@@ -13,7 +13,8 @@
      companys : null,
      pollSelected : null,
      isDisabledSC:true,
-     dynamicTitle:'Datos Empleado'
+     dynamicTitle:'Datos Empleado',
+     filterValue: ''
     },
     methods:{
      fetchAllData:function(){
@@ -147,6 +148,15 @@
       {
        alert("Favor de Completar el Formulario");
       }
+     },
+
+     filtrar(){
+      axios.post('../php/bd_employee.php', {
+        action:'filterEmpleado'
+        ,filter:this.filterValue 
+       }).then(function(response){
+        application_employee.allData_Emp = response.data;
+       });
      },
      fetchData:function(id){
       axios.post('../php/bd_employee.php', {

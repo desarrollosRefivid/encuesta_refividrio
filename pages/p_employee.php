@@ -9,10 +9,25 @@ require 'header.php';
   
    <br />
    <h3 align="center">Empleado</h3>
-   <br />
-
+   
+   <label>Filtrar</label> 
+  
    <div class="panel panel-default">
     <div class="panel-heading">
+
+    <table>
+      <tr>
+        <td>
+         <input type="text" class="form-control" v-model="filterValue" />
+        </td> 
+        <td>
+          <button type="button" name="filter" class="btn btn-info btn-xs" @click="filtrar"> filtrar</button>
+        </td> 
+      </tr>
+    </table>
+    
+    
+    </br></br>
      <div class="row">
       <div class="col-md-6">
        <h3 class="panel-title">Datos</h3>
@@ -26,6 +41,7 @@ require 'header.php';
      <div class="table-responsive">
       <table class="table table-bordered table-striped">
        <tr>
+       <th>Empresa</th>
         <th>Segmento</th>
         <th>Rol</th>
         <th>Empleado</th>
@@ -33,6 +49,7 @@ require 'header.php';
         <th>Eliminar</th>
        </tr>
        <tr v-for="row in allData_Emp">
+       <td>{{ row.empresa_nombre }}</td>
        <td>{{ row.segmento }}</td>
         <td>{{ row.nombre +' '+ row.paterno +' '+ row.materno }}</td>
         <td><button type="button" name="company" class="btn btn-info btn-xs edit" @click="asingCompany(row)">Rol</button></td>

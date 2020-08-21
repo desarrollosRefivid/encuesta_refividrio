@@ -148,6 +148,11 @@ INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, 
 INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 9, NULL, '2020-08-18 11:31:49.460333-05', 'Si', true, NULL, '2020-08-18 11:31:49.460333-05', 1);
 INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 9, NULL, '2020-08-18 11:31:49.561997-05', 'No', true, NULL, '2020-08-18 11:31:49.561997-05', 2);
 
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:33:20.237122-05', 'Sin Respuesta', true, NULL, '2020-08-18 11:36:01.95794-05', 0);
+
+
 INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
 VALUES ( 10, NULL, '2020-08-18 11:33:20.237122-05', 'Aguascalientes', true, NULL, '2020-08-18 11:36:01.95794-05', 1);
 

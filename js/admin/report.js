@@ -69,6 +69,8 @@ var report = new Vue({
                     return 'resultadoEncuesta_1';
                 case 'G':
                     return 'resultadoEncuesta_1';
+                case 'D':
+                    return 'resultadoEncuesta_2'; 
                 default :
                     return '';   
             }

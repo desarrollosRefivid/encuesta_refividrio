@@ -7,9 +7,30 @@ session_start();
     $data = array();
 
     if ($received_data->action == 'fetchall') {
-        $query = "SELECT e.*, s.nombre As segmento FROM empleado e
-                    INNER JOIN segmento s ON s.id_segmento =  e.id_segmento
-                        ORDER BY id_empleado DESC";
+        $query = " SELECT e.*, s.nombre As segmento,empresa.empresa_nombre FROM empleado e
+        INNER JOIN segmento s ON s.id_segmento =  e.id_segmento
+        INNER JOIN empresa empresa ON empresa.id_empresa = s.id_empresa 
+        ORDER BY empresa.id_empresa, s.nombre,e.paterno,e.materno,e.nombre DESC";
+        $statement = $connect->prepare($query);
+        $statement->execute();
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+            $data[] = $row;
+        }
+        echo json_encode($data);
+    }
+
+    if ($received_data->action == 'filterEmpleado') {
+        
+        $query = " SELECT e.*, s.nombre As segmento,empresa.empresa_nombre FROM empleado e
+        INNER JOIN segmento s ON s.id_segmento =  e.id_segmento
+        INNER JOIN empresa empresa ON empresa.id_empresa = s.id_empresa
+        WHERE 
+        CONCAT(e.paterno,' ',e.materno,' ',e.nombre) ILIKE '%$received_data->filter%'
+        OR  empresa.empresa_nombre ILIKE '%$received_data->filter%'
+        OR s.nombre ILIKE '%$received_data->filter%'
+        OR e.usuario ILIKE '%$received_data->filter%'
+        ORDER BY empresa.id_empresa, s.nombre,e.paterno,e.materno,e.nombre DESC
+         ";
         $statement = $connect->prepare($query);
         $statement->execute();
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
