@@ -41,20 +41,24 @@ require 'header.php';
      <div class="table-responsive">
       <table class="table table-bordered table-striped">
        <tr>
-       <th>Empresa</th>
-        <th>Segmento</th>
-        <th>Rol</th>
+        <th>ID</th>
+        <th>Empresa</th>
+        <th>Segmento</th> 
         <th>Empleado</th>
-        <th>Editar</th>
-        <th>Eliminar</th>
+        <th></th>
+        <th></th>
+        <th></th>
+        <th></th>
        </tr>
        <tr v-for="row in allData_Emp">
+       <td>{{ row.id_empleado }}</td>
        <td>{{ row.empresa_nombre }}</td>
        <td>{{ row.segmento }}</td>
-        <td>{{ row.nombre +' '+ row.paterno +' '+ row.materno }}</td>
+        <td>{{row.paterno +' '+ row.materno + ' ' + row.nombre  }}</td>
         <td><button type="button" name="company" class="btn btn-info btn-xs edit" @click="asingCompany(row)">Rol</button></td>
-        <td><button type="button" name="edit" class="btn btn-primary btn-xs edit" @click="fetchData(row.id_empleado)">Editar</button></td>
+        <td><button type="button" name="edit" class="btn btn-secondary btn-xs edit" @click="fetchData(row.id_empleado)">Editar</button></td>
         <td><button type="button" name="delete" class="btn btn-danger btn-xs delete" @click="deleteData(row.id_empleado)">Eliminiar</button></td>
+        <td><button @click="resetPassword(row.id_empleado)" style="border:none;background:none;color:blue" :disabled=disbledResetPass  >Restablecer Contraseña</button></td>
        </tr>
       </table>
      </div>

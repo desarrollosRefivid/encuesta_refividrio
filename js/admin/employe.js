@@ -14,7 +14,8 @@
      pollSelected : null,
      isDisabledSC:true,
      dynamicTitle:'Datos Empleado',
-     filterValue: ''
+     filterValue: '',
+     disbledResetPass: false
     },
     methods:{
      fetchAllData:function(){
@@ -24,18 +25,35 @@
        application_employee.allData_Emp = response.data;
       });
      },
-
+     resetPassword(id){ 
+      if(confirm("¿Estas seguro de Restablecer la Contraseña?"))
+      {
+        this.disbledResetPass = true;
+        axios.post('../php/bd_employee.php', {
+          action:'resetPassword',id_empleado:id
+         }).then(function(response){
+           console.log(response);
+           try {
+            if (response.data == "Reset Password Success") {
+                this.disbledResetPass = false;
+                alert("La contraseña del empleado con ID:" + id + " he sido Restablecida."); 
+              } else {
+                this.disbledResetPass = false;
+                alert("No se pudo completar la Acción."); 
+              }
+           } catch (error) {
+            alert("No se pudo completar la Acción.");
+           } 
+         }); 
+      } 
+     },
      fetchAllData_Company:function(){
       axios.post('../php/bd_company.php', {
        action:'fetchall'
       }).then(function(response){
-       application_employee.allDataComboCompany = response.data;
-         //alert(response.data.message);
-         //console.log(response.data);
+       application_employee.allDataComboCompany = response.data; 
       } , function(){
-      alert('No se han podido recuperar las empresas');
-
-
+        alert('No se han podido recuperar las empresas'); 
       });
      },
      

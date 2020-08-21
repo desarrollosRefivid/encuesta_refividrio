@@ -199,4 +199,17 @@ if ($received_data->action == 'fetchByDepartament') {
 }
  
 
+if ($received_data->action == 'resetPassword') { 
+    try { 
+            require_once "postgres.php";  
+            $query = " UPDATE empleado SET  password =  md5('refividrio')  WHERE id_empleado= " . $received_data->id_empleado;
+            $statement = $connect->prepare($query);
+            $statement->execute(); 
+            echo json_encode('Reset Password Success');  
+    } catch (PDOException $e) {
+        echo json_encode( $e );
+    }  
+}
+ 
+
 ?>
