@@ -16,7 +16,7 @@
 </div>
 <div class="alert alert-success" role="alert" id="msg" style="display:none" > 
 </div>
-
+	<center>
 	<div class="modal-dialog" style="color: #636363; width: 350px;">
 		<div class="modal-content"> 
 			<div class="modal-header"> 
@@ -41,6 +41,7 @@
             </div> 
 		</div>
 	</div>
+	</center>
 </div>     
 
 </body>
