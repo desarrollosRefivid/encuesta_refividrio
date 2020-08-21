@@ -10,7 +10,7 @@ session_start();
         $query = "SELECT s.*,e.empresa_nombre 
                     FROM segmento s 
                   INNER JOIN Empresa e ON e.id_empresa = s.id_empresa  
-                  ORDER BY id_segmento DESC";
+                  ORDER BY s.id_empresa,s.nombre DESC";
         $statement = $connect->prepare($query);
         $statement->execute();
         while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
@@ -62,6 +62,24 @@ if ($received_data->action == 'fetchSingle') {
 
     }
 
+    echo json_encode($data);
+}
+
+if ($received_data->action == 'filterOrganization') {
+        
+    $query = " SELECT s.*,e.empresa_nombre 
+    FROM segmento s 
+  INNER JOIN Empresa e ON e.id_empresa = s.id_empresa   
+    WHERE 
+    empresa_nombre ILIKE '%$received_data->filter%'
+    OR  s.nombre ILIKE '%$received_data->filter%' 
+    ORDER BY s.id_empresa,s.nombre DESC
+     ";
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $data[] = $row;
+    }
     echo json_encode($data);
 }
 

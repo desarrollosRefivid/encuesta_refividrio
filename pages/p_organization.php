@@ -3,18 +3,29 @@
 require 'header.php';
 
 ?>
-   <html lang="es">
+ 
+ 
+<div class="container-fluid">
 
-        <!-- Begin Page Content -->
-        <div class="container-fluid">
-
-           <!-- TABLA INICIO -->
-           <div class="container" id="crudOrg">
+<div class="container" id="crudOrg">
    <br />
    <h3 align="center">Organizaci&oacute;n</h3>
    <br />
    <div class="panel panel-default">
     <div class="panel-heading">
+
+
+    <table>
+      <tr>
+        <td>
+         <input type="text" class="form-control" v-model="filterValue" />
+        </td> 
+        <td>
+          <button type="button" name="filter" class="btn btn-info btn-xs" @click="filtrar"> filtrar</button>
+        </td> 
+      </tr>
+    </table>
+
      <div class="row">
       <div class="col-md-6">
        <h3 class="panel-title">Datos</h3>
@@ -44,97 +55,58 @@ require 'header.php';
     </div>
    </div>
 
-   <div v-if="myModel">
-    <transition name="model">
-     <div class="modal-mask">
-       <div class="modal-dialog">
-        <div class="modal-content">
-         <div class="modal-header">
-          <h4 class="modal-title">{{ dynamicTitle }}</h4>
-          <button type="button" class="close" @click="myModel=false"><span aria-hidden="true">&times;</span></button>
-         </div>
-         <div class="modal-body">
-         <div class="card-body">
-
-          <div class="form-group">
-              <label>Selecciona Empresa:</label>
-              <select class='form-control'  v-model="company">
-                <option value='0' >Selecciona Empresa</option>
-                <option v-for="rows in allDataCombo" v-bind:value='rows.id_empresa'>{{ rows.empresa_nombre }}</option>
-              </select>
+    <div v-if="myModel">
+      <transition name="model">
+      <div class="modal-mask">
+        <div class="modal-dialog">
+          <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title">{{ dynamicTitle }}</h4>
+            <button type="button" class="close" @click="myModel=false"><span aria-hidden="true">&times;</span></button>
           </div>
-          <div class="form-group">
-           <label>Segmento</label>
-           <input type="text" class="form-control" v-model="first_name" />
-          </div>
-          <div class="form-group">
-           <label>Observaciones</label>
-           <input type="text" class="form-control" v-model="last_name" />
-          </div>
+          <div class="modal-body">
+          <div class="card-body">
 
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="checked" v-model="checked"  false-value="false" true-value="true" >
-            <label class="custom-control-label" for="checked">Activo</label>
+            <div class="form-group">
+                <label>Selecciona Empresa:</label>
+                <select class='form-control'  v-model="company">
+                  <option value='0' >Selecciona Empresa</option>
+                  <option v-for="rows in allDataCombo" v-bind:value='rows.id_empresa'>{{ rows.empresa_nombre }}</option>
+                </select>
+            </div>
+            <div class="form-group">
+            <label>Segmento</label>
+            <input type="text" class="form-control" v-model="first_name" />
+            </div>
+            <div class="form-group">
+            <label>Observaciones</label>
+            <input type="text" class="form-control" v-model="last_name" />
+            </div>
+
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="checked" v-model="checked"  false-value="false" true-value="true" >
+              <label class="custom-control-label" for="checked">Activo</label>
+            </div>
+
+            <br />
+            <div align="center">
+            <input type="hidden" v-model="hiddenId" />
+            <input type="button" class="btn btn-success btn-xs" v-model="actionButton" @click="submitData" />
+            </div>
           </div>
-
-          <br />
-          <div align="center">
-           <input type="hidden" v-model="hiddenId" />
-           <input type="button" class="btn btn-success btn-xs" v-model="actionButton" @click="submitData" />
-          </div>
-         </div>
-        </div>
-       </div>
-      </div>
-    </transition>
-   </div>
-  </div>
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- End of Main Content -->
-
-      <!-- Footer -->
-      <footer class="sticky-footer bg-white">
-        <div class="container my-auto">
-          <div class="copyright text-center my-auto">
-            <span>Copyright &copy; Your Website 2020</span>
           </div>
         </div>
-      </footer>
-      <!-- End of Footer -->
-
+        </div>
+      </transition>
     </div>
-    <!-- End of Content Wrapper -->
-
-  </div>
-  <!-- End of Page Wrapper -->
-
-  <!-- Scroll to Top Button-->
-  <a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-  </a>
-
-  <!-- Logout Modal-->
-  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">×</span>
-          </button>
-        </div>
-        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-        <div class="modal-footer">
-          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-          <a class="btn btn-primary" href="login.html">Logout</a>
-        </div>
-      </div>
     </div>
-  </div>
+      </div> 
+    </div> 
+  </div> 
+</div> 
 
+ 
+ 
 </body>
 <script type="text/javascript" src="../js/admin/organization.js"></script>
  

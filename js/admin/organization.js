@@ -6,6 +6,7 @@ var organization = new Vue({
      actionButton:'Agregar',
      dynamicTitle:'Datos Segmento',
      hiddenId: null,
+     filterValue: ''
     },
     methods:{
      fetchAllData:function(){
@@ -15,6 +16,14 @@ var organization = new Vue({
         organization.allData_Org = response.data;
       });
      },
+     filtrar(){
+      axios.post('../php/bd_organization.php', {
+       action:'filterOrganization'
+       ,filter:this.filterValue 
+       }).then(function(response){
+         organization.allData_Org = response.data;
+       });
+    },
 
      fetchAllData_Company:function(){
       axios.post('../php/bd_company.php', {
@@ -29,7 +38,7 @@ var organization = new Vue({
 
       });
      }
-    , 
+   ,
      openModel:function(){
         organization.first_name = '';
         organization.last_name = '';
