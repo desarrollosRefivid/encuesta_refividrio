@@ -147,37 +147,103 @@ INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, 
 INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 8, NULL, '2020-08-18 11:31:10.175049-05', 'Otra', true, NULL, '2020-08-18 11:31:10.175049-05', 6);
 INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 9, NULL, '2020-08-18 11:31:49.460333-05', 'Si', true, NULL, '2020-08-18 11:31:49.460333-05', 1);
 INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 9, NULL, '2020-08-18 11:31:49.561997-05', 'No', true, NULL, '2020-08-18 11:31:49.561997-05', 2);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:33:20.237122-05', 'México', true, NULL, '2020-08-18 11:36:01.95794-05', 1);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.089017-05', 'San luis', true, NULL, '2020-08-18 11:36:02.089017-05', 2);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.184649-05', 'Campeche', true, NULL, '2020-08-18 11:36:02.184649-05', 3);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.275795-05', 'Durango', true, NULL, '2020-08-18 11:36:02.275795-05', 4);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.375318-05', 'Hidalgo', true, NULL, '2020-08-18 11:36:02.375318-05', 5);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.471076-05', 'Puebla', true, NULL, '2020-08-18 11:36:02.471076-05', 6);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.563186-05', 'Monterrey', true, NULL, '2020-08-18 11:36:02.563186-05', 7);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.653681-05', 'Chiapas', true, NULL, '2020-08-18 11:36:02.653681-05', 8);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.745277-05', 'Oaxaca', true, NULL, '2020-08-18 11:36:02.745277-05', 9);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.835822-05', 'Guanajuato', true, NULL, '2020-08-18 11:36:02.835822-05', 10);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:02.947116-05', 'Guadalajara', true, NULL, '2020-08-18 11:36:02.947116-05', 11);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:03.049477-05', 'Sinalo', true, NULL, '2020-08-18 11:36:03.049477-05', 12);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:03.13948-05', 'Gerrero', true, NULL, '2020-08-18 11:36:03.13948-05', 13);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:03.238036-05', 'CDMX', true, NULL, '2020-08-18 11:36:03.238036-05', 14);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:03.329252-05', 'Michoacan', true, NULL, '2020-08-18 11:36:03.329252-05', 15);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:03.41998-05', 'Queretaro', true, NULL, '2020-08-18 11:36:03.41998-05', 16);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:03.510918-05', 'Baja California sur', true, NULL, '2020-08-18 11:36:03.510918-05', 17);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Baja California Norte', true, NULL, '2020-08-18 11:36:03.605311-05', 18);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 11, NULL, '2020-08-18 11:37:32.863943-05', 'Caminando', true, NULL, '2020-08-18 11:37:32.863943-05', 1);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 11, NULL, '2020-08-18 11:37:32.959231-05', 'Transporte público (combi, camión, metro, etc.)', true, NULL, '2020-08-18 11:37:32.959231-05', 2);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 11, NULL, '2020-08-18 11:37:33.050836-05', 'Transporte particular (automóvil, motocicleta, bicicleta, etc.)', true, NULL, '2020-08-18 11:37:33.050836-05', 3);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 11, NULL, '2020-08-18 11:37:33.146871-05', 'Contrato de servicio de transporte (pj. Uber)', true, NULL, '2020-08-18 11:37:33.146871-05', 4);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 12, NULL, '2020-08-18 11:38:14.369812-05', 'Si', true, NULL, '2020-08-18 11:38:14.369812-05', 1);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 12, NULL, '2020-08-18 11:38:14.464262-05', 'No', true, NULL, '2020-08-18 11:38:14.464262-05', 2);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 14, NULL, '2020-08-18 11:39:28.93342-05', 'Caminando', true, NULL, '2020-08-18 11:39:28.93342-05', 1);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 14, NULL, '2020-08-18 11:39:29.0424-05', 'Transporte público (combi, camión, metro, etc.)', true, NULL, '2020-08-18 11:39:29.0424-05', 2);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 14, NULL, '2020-08-18 11:39:29.136516-05', 'Transporte particular (automóvil, motocicleta, bicicleta, etc.)', true, NULL, '2020-08-18 11:39:29.136516-05', 3);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 14, NULL, '2020-08-18 11:39:29.239165-05', 'Contrato de servicio de transporte (pj. Uber)', true, NULL, '2020-08-18 11:39:29.239165-05', 4);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 15, NULL, '2020-08-18 11:40:45.064963-05', 'Uso de gel antibacterial', true, NULL, '2020-08-18 11:40:45.064963-05', 1);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 15, NULL, '2020-08-18 11:40:45.158092-05', 'Uso de cubrebocas', true, NULL, '2020-08-18 11:40:45.158092-05', 2);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 15, NULL, '2020-08-18 11:40:45.24928-05', 'Lavado de manos', true, NULL, '2020-08-18 11:40:45.24928-05', 3);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 15, NULL, '2020-08-18 11:40:45.339931-05', 'Sana distancia', true, NULL, '2020-08-18 11:40:45.339931-05', 4);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 15, NULL, '2020-08-18 11:40:45.430441-05', 'Ninguna', true, NULL, '2020-08-18 11:40:45.430441-05', 5);
-INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) VALUES ( 15, NULL, '2020-08-18 11:40:45.526551-05', 'Otra', true, NULL, '2020-08-18 11:40:45.526551-05', 6);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:33:20.237122-05', 'Aguascalientes', true, NULL, '2020-08-18 11:36:01.95794-05', 1);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.089017-05', 'Baja California', true, NULL, '2020-08-18 11:36:02.089017-05', 2);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.184649-05', 'Baja California Sur', true, NULL, '2020-08-18 11:36:02.184649-05', 3);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.275795-05', 'Campeche', true, NULL, '2020-08-18 11:36:02.275795-05', 4);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.375318-05', 'Chiapas', true, NULL, '2020-08-18 11:36:02.375318-05', 5);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.471076-05', 'Chihuahua', true, NULL, '2020-08-18 11:36:02.471076-05', 6);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.563186-05', 'Ciudad de México', true, NULL, '2020-08-18 11:36:02.563186-05', 7);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.653681-05', 'Coahuila', true, NULL, '2020-08-18 11:36:02.653681-05', 8);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.745277-05', 'Colima', true, NULL, '2020-08-18 11:36:02.745277-05', 9);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision)
+ VALUES ( 10, NULL, '2020-08-18 11:36:02.835822-05', 'Durango', true, NULL, '2020-08-18 11:36:02.835822-05', 10);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:02.947116-05', 'Estado de México', true, NULL, '2020-08-18 11:36:02.947116-05', 11);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.049477-05', 'Guanajuato', true, NULL, '2020-08-18 11:36:03.049477-05', 12);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.13948-05', 'Guerrero', true, NULL, '2020-08-18 11:36:03.13948-05', 13);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.238036-05', 'Hidalgo', true, NULL, '2020-08-18 11:36:03.238036-05', 14);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.329252-05', 'Jalisco', true, NULL, '2020-08-18 11:36:03.329252-05', 15);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.41998-05', 'Michoacán', true, NULL, '2020-08-18 11:36:03.41998-05', 16);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.510918-05', 'Morelos', true, NULL, '2020-08-18 11:36:03.510918-05', 17);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Nayarit', true, NULL, '2020-08-18 11:36:03.605311-05', 18);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Nuevo León', true, NULL, '2020-08-18 11:36:03.605311-05', 19);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Oaxaca', true, NULL, '2020-08-18 11:36:03.605311-05', 20);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Puebla', true, NULL, '2020-08-18 11:36:03.605311-05', 21);
+
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Querétaro', true, NULL, '2020-08-18 11:36:03.605311-05', 22);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Quintana Roo', true, NULL, '2020-08-18 11:36:03.605311-05', 23);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'San Luis Potosí', true, NULL, '2020-08-18 11:36:03.605311-05', 24);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Sinaloa', true, NULL, '2020-08-18 11:36:03.605311-05', 25);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Sonora', true, NULL, '2020-08-18 11:36:03.605311-05', 26);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Tabasco ', true, NULL, '2020-08-18 11:36:03.605311-05', 27);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Tamaulipas', true, NULL, '2020-08-18 11:36:03.605311-05', 28);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Tlaxcala', true, NULL, '2020-08-18 11:36:03.605311-05', 29);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Veracruz ', true, NULL, '2020-08-18 11:36:03.605311-05', 30);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Yucatán', true, NULL, '2020-08-18 11:36:03.605311-05', 31);
+
+INSERT INTO refividrio.opciones ( id_pregunta, id_creado, fecha_creado, nombre, activo, id_actualizadopor, fecha_actualizado, pocision) 
+VALUES ( 10, NULL, '2020-08-18 11:36:03.605311-05', 'Zacatecas', true, NULL, '2020-08-18 11:36:03.605311-05', 32);
+
+
+
