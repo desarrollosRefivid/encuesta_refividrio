@@ -151,7 +151,10 @@ if ($received_data->action == 'fetchByType') {
 		true
 	ELSE 
       	(  now()::date > validohasta )
-	END";
+    END 
+    
+    ORDER BY nombre
+    ";
     $statement = $connect->prepare($query);
     $statement->execute();
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
