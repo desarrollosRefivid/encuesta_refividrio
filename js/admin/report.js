@@ -71,6 +71,8 @@ var report = new Vue({
                     return 'resultadoEncuesta_1';
                 case 'D':
                     return 'resultadoEncuesta_2'; 
+                case 'E':
+                    return 'resultadoEncuesta_1_1';  
                 default :
                     return '';   
             }
