@@ -3,7 +3,7 @@
     $nombre = ''; $id_empleado = ''; 
     if (isset($_SESSION['rol'])) {
       if ($_SESSION['rol'] == 'user')  {
-        $nombre = $_SESSION['nombre']. ' '. $_SESSION['paterno'];  
+        $nombre = $_SESSION['nombre']. ' '. $_SESSION['paterno'] . ' '. $_SESSION['materno'];  
       }else{
         header('location: ../');
       } 

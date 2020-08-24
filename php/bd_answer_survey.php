@@ -26,8 +26,9 @@ require_once "postgres.php";
     if ($received_data->action == 'fetchallOption') {
         $query = "
         SELECT  
-        o.id_opcion,o.nombre As opcion
-                ,o.activo As op_activo , o.id_pregunta, o.pocision ,'update' as action
+            o.id_opcion,o.nombre As opcion
+            ,o.activo As op_activo , o.id_pregunta
+            ,o.pocision ,'update' as action
         FROM refividrio.encuesta e
                 INNER JOIN pregunta p ON p.id_encuesta = e.id_encuesta
                 INNER JOIN opciones o ON o.id_pregunta = p.id_pregunta

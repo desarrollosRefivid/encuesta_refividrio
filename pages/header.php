@@ -5,7 +5,7 @@
     $nombre = '';
     if (isset($_SESSION['rol'])) {
       if ($_SESSION['rol'] == 'admin')  {
-        $nombre = $_SESSION['nombre']. ' '. $_SESSION['paterno']; 
+        $nombre = $_SESSION['nombre']. ' '. $_SESSION['paterno'] . ' '. $_SESSION['materno'];  
       }else{
         header('location: ../');
       } 

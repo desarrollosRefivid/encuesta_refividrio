@@ -8,8 +8,12 @@ $rol =  $received_data->rol;
 if ($received_data->action == 'login') { 
     if ($rol != "0" ) {
         try { 
-            $_SESSION['id_empleado'] = $rol->id_empleado;  $_SESSION['nombre'] = $rol->nombre;
-            $_SESSION['paterno'] = $rol->paterno;  $_SESSION['rol'] = $rol->rol;  $_SESSION['password'] = $rol->password; 
+            $_SESSION['id_empleado'] = $rol->id_empleado;  
+            $_SESSION['nombre'] = $rol->nombre;
+            $_SESSION['paterno'] = $rol->paterno;  
+            $_SESSION['materno'] = $rol->materno;  
+            $_SESSION['rol'] = $rol->rol;  
+            $_SESSION['password'] = $rol->password; 
             echo 'succes';  
         } catch (\Throwable $th) {  echo  $th;   }   
     } else {
