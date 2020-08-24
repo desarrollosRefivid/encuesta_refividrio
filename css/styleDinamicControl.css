@@ -9,6 +9,7 @@ input[type=checkbox] {
     background-color: #fff;
     display: inline-block;
     margin-left: 10px; 
+    margin-top: -6px; 
     color: #00BFF0;
     width: 22px;
     height: 22px;
