@@ -50,12 +50,12 @@ var report = new Vue({
             params += "&id_empresa=" + this.empresaSelected;
             params += "&name_report=" + this.nameReport(this.reportSelected);
 
-            if( this.reportSelected  == 'F'){
-                params += "&realizadas=0"; 
-            }
-            if(this.reportSelected  == 'G'){ 
-                params += "&realizadas=1"; 
-            }
+            if(this.reportSelected  == 'A'){ params += "&nivel=3";      }
+            if(this.reportSelected  == 'B'){ params += "&nivel=2";      }
+            if(this.reportSelected  == 'C'){ params += "&nivel=1";      } 
+            if(this.reportSelected  == 'F'){ params += "&realizadas=0"; }
+            if(this.reportSelected  == 'G'){ params += "&realizadas=1"; } 
+
             params += "&tipo_encuesta=" + this.typePoolSelected; //0 = Todos los tipos de encuestas; 1 : Concluidas; 2 : En captura;
             console.log(params);
             document.getElementById("viewReport").innerHTML =  '<center><iframe src=' + params +' style="width:90%;height:1150px;"></iframe></center>'; 
@@ -63,18 +63,15 @@ var report = new Vue({
         },
         nameReport(letter){
             switch (letter) {
-                case 'H':
-                    return 'resultadoEncuesta';
-                case 'F':
-                    return 'resultadoEncuesta_1';
-                case 'G':
-                    return 'resultadoEncuesta_1';
-                case 'D':
-                    return 'resultadoEncuesta_2'; 
-                case 'E':
-                    return 'resultadoEncuesta_1_1';  
-                default :
-                    return '';   
+                case 'A': return 'resultadoEncuesta_1_2'; //Max
+                case 'B': return 'resultadoEncuesta_1_2'; //Alto
+                case 'C': return 'resultadoEncuesta_1_2'; // Medio
+                case 'D':  return 'resultadoEncuesta_2'; 
+                case 'E': return 'resultadoEncuesta_1_1';   
+                case 'F':  return 'resultadoEncuesta_1';
+                case 'G': return 'resultadoEncuesta_1';
+                case 'H': return 'resultadoEncuesta';
+                default : return '';   
             }
         },
         closeFrameReportView(){

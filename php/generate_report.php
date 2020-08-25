@@ -25,6 +25,7 @@ class generate_report
         $id_segmento = (isset($_GET['id_segmento'])?$_GET['id_segmento']:0);
         $id_empresa = (isset($_GET['id_empresa'])?$_GET['id_empresa']:0); 
         $realizadas = (isset($_GET['realizadas'])?$_GET['realizadas']:0);
+        $nivel = (isset($_GET['nivel'])?$_GET['nivel']:0);
         $tipo_encuesta = (isset($_GET['tipo_encuesta'])?$_GET['tipo_encuesta']:0);//0 = Todos los tipos de encuestas; 1 : Concluidas; 2 : En captura;
 
         $params = array(
@@ -33,7 +34,8 @@ class generate_report
                 'id_segmento' => $id_segmento,
                 'id_empresa' => $id_empresa, 
                 'tipo_encuesta' => $tipo_encuesta ,
-                'realizadas' => $realizadas 
+                'realizadas' => $realizadas, 
+                'nivel' => $nivel 
             );
 
         $c = new Client("http://67.205.162.138:51541/jasperserver", "DesarrolloAdmin", "Dev_JasperSoft#20");

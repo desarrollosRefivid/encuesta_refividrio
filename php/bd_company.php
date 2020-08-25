@@ -103,3 +103,23 @@ if ($received_data->action == 'delete') {
 
     echo json_encode($output);
 }
+
+if ($received_data->action == 'insertImage') {  
+        try {
+            $data = file_get_contents( '../img/empresas/adirh.jpg' );  
+            $escaped = bin2hex( $data );   
+            $datas = array(  ); 
+            $query = "INSERT INTO refividrio.file(file, name, type, id_table) VALUES ( decode('{$escaped}' , 'hex'), 'logoADIRH', 'jpg' , 5); "; 
+            $statement = $connect->prepare($query); 
+            $statement->execute($datas); 
+            $output = array(
+                'message' => 'Imagen Guardada'
+            ); 
+            echo json_encode($output);
+        } catch (\Throwable $th) {
+             echo $th;
+        }
+  
+
+}
+
