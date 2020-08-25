@@ -97,7 +97,7 @@ require 'header.php';
             <label>Segmento</label>
             <select class='form-control'  v-model="organization">
             <option value='0' >Selecciona Segmento</option>
-            <option v-for="rows in allDataCombo" v-bind:value='rows.id_segmento'>{{ rows.nombre }} {{ rows.empresa_nombre }}</option>
+            <option v-for="rows in allDataCombo" v-bind:value='rows.id_segmento'>{{ rows.nombre }} ({{ rows.empresa_nombre }})</option>
             </select>
         </div>
 
