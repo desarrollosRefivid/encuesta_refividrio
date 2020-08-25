@@ -123,6 +123,11 @@
       <li class="nav-item active">
         <a class="nav-link" href="logout.php">Salir <span class="sr-only">(current)</span></a>
       </li>
+
+      <li class="nav-item active">
+        
+      </li>
+      
   </div>
 </nav> 
 
