@@ -125,11 +125,9 @@ var application_poll = new Vue({
                 this.dynamicTitle = this.questionSelected.nombre_pregunta;
                 this.options = await axios.post("../php/bd_option.php", { action:'fetchallOption',  idQuestion: this.questionSelected.id_pregunta }).then(function (response) {    return response.data;   })  .catch(function (response) {    return response.data;  }) 
                 this.myModelPoll2 = true; 
-            }  
-            // console.log( this.options ); 
+            }   
         },newOption(){ 
-            this.options.push({"id_opcion":0,"opcion":"","op_activo":true,action: "insert",id_pregunta: this.questionSelected.id_pregunta});
-            // console.log(this.options);
+            this.options.push({"id_opcion":0,"opcion":"","op_activo":true,action: "insert",id_pregunta: this.questionSelected.id_pregunta,"respuesta_extra":false});
         },async completeOption(){  
             this.btePressed = true; 
             for (let index = 0; index < this.options.length; index++) {
@@ -139,6 +137,7 @@ var application_poll = new Vue({
                     if (result.message == 'Data Updated' ||  result.message == 'Data Deleted' ||   result.message == 'Data Inserted') {
                         console.log(result); 
                     }else{ 
+                        console.log(result); 
                         switch(element.action){
                             case 'update': 
                                 alert("Error Actualizando la opción: " + element.opcion);

@@ -64,12 +64,12 @@ if ($received_data->action == 'fetchallOption') {
     $query = "
     SELECT  
     o.id_opcion,o.nombre As opcion
-            ,o.activo As op_activo , o.id_pregunta, o.pocision ,'update' as action
+            ,o.activo As op_activo , o.id_pregunta, o.pocision ,'update' as action,o.respuesta_extra
     FROM refividrio.encuesta e
             INNER JOIN pregunta p ON p.id_encuesta = e.id_encuesta
             INNER JOIN opciones o ON o.id_pregunta = p.id_pregunta
             INNER JOIN tipo t ON t.id_tipo = p.id_tipo 
-    WHERE p.id_pregunta =     " . $received_data->idQuestion . "
+    WHERE p.id_pregunta =" . $received_data->idQuestion . "
 
      
             ORDER BY  o.pocision ";

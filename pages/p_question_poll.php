@@ -5,9 +5,7 @@
     }else{ 
 ?>  
 <script> location.href="p_poll.php";</script>  
-<?php } ?>
-
-
+<?php } ?> 
 <div class="container" id="crudPollQuestion"> 
  
     <h2>{{ poll.poll_name }}</h2><h4>{{ poll.poll_help }}</h>  <h6>Período {{ poll.poll_validfrom }} {{ poll.poll_validUntil }}</h6>  
@@ -152,6 +150,10 @@
                                         <div class="custom-control custom-checkbox">
                                           <input type="checkbox" class="custom-control-input" :id="'op_activo' + r.id_opcion" v-model="r.op_activo"  false-value="false" true-value="true" >
                                           <label class="custom-control-label" :for="'op_activo' + r.id_opcion" >Activo</label>
+                                        </div>  
+                                        <div class="custom-control custom-checkbox">
+                                          <input :disabled="true"  type="checkbox" class="custom-control-input" :id="'op_respuesta_extra' + r.id_opcion" v-model="r.respuesta_extra"  false-value=false true-value=true >
+                                          <label class="custom-control-label" :for="'op_respuesta_extra' + r.id_opcion" >Permitir Valor de Usuario</label>
                                         </div> 
                                     </div> 
                                     </br>
@@ -168,8 +170,7 @@
                 </div>
               </div>
             </transition>
-          </div> 
- 
+          </div>  
     </div> 
   </div>  
 <script type="text/javascript" src="../js/admin/question_poll.js"></script> 
