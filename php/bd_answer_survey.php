@@ -1,7 +1,7 @@
 <?php
 
 require_once "postgres.php";
-
+    session_start();
     $received_data = json_decode(file_get_contents("php://input"));
     $data = array();
 
@@ -28,7 +28,7 @@ require_once "postgres.php";
         SELECT  
             o.id_opcion,o.nombre As opcion
             ,o.activo As op_activo , o.id_pregunta
-            ,o.pocision ,'update' as action
+            ,o.pocision ,'update' as action,respuesta_extra
         FROM refividrio.encuesta e
                 INNER JOIN pregunta p ON p.id_encuesta = e.id_encuesta
                 INNER JOIN opciones o ON o.id_pregunta = p.id_pregunta
@@ -45,8 +45,25 @@ require_once "postgres.php";
         }
         echo json_encode($data);
     }
-    session_start();
     
+    
+    if ($received_data->action == 'insert_answer_extra') {
+        $data = array(
+            ':id_option' => $received_data->answer_extra->id_option,
+            ':value' => $received_data->answer_extra->value,
+            ':id_empleado' =>  $_SESSION['id_empleado'], 
+        ); 
+        $query = "INSERT INTO refividrio.option_answer_free(id_option, value, id_empleado)
+                  VALUES (:id_option,:value,:id_empleado)"; 
+        $statement = $connect->prepare($query); 
+        $statement->execute($data); 
+        $output = array(
+            'message' => 'Data Inserted'
+        ); 
+        echo json_encode($output);
+    } 
+
+
     if ($received_data->action == 'insertAnswer') {
         $data = array(
             ':id_pregunta' => $received_data->respuesta->id_pregunta,

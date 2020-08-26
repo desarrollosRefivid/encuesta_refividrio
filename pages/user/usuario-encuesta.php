@@ -17,9 +17,16 @@
             <div v-for="row in questions">  
                 <div :id="'label_'+ row.id_pregunta" style="margin-top:15px;" ><span><strong> {{ row.nombre_pregunta }}</strong></span> </div>  
                     <div v-if="row.tipo == 'checkbox'"   >
-                        <div v-for="r in row.options" >     
-                            <input style="margin-left:5px;"   :type=row.tipo :id="row.id_pregunta + '_' + r.id_opcion" :value=r.id_opcion > <span>{{ r.opcion }}</span>  
-                        </div>
+                        <div v-for="r in row.options" >    
+                            <div class="col-md-12">
+                                <input style="margin-left:5px;"   :type=row.tipo :id="row.id_pregunta + '_' + r.id_opcion" :value=r.id_opcion > 
+                                    <span>
+                                        {{ r.opcion }}  
+                                        <input v-if="r.respuesta_extra"   style="width:50%;  border-top: none;  border-left: none;  border-right: none;  border-bottom: 1px solid #03a8f45e;"
+                                          type="text" :id="r.id_opcion + '_respuesta_extra'" placeholder="Especifique cual" > 
+                                    </span>
+                            </div>  
+                        </div> 
                     </div>   
                     <div v-if="row.tipo == 'select'"  >   
                         <select   style="margin-left:15px;" :id="'res_' + row.id_pregunta" class="form-control">

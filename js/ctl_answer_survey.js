@@ -7,11 +7,13 @@ var application = new Vue({
     },
     methods:{
        async getRespuestas(){
-            
+            let array_answer_extra  = [] ;
             application.btePressed = true;
             let formValid = true;
             let validAnswers = []; 
+            let other_answer_empty = true;
             this.questions.forEach(pregunta => {
+ 
                 if (pregunta.direct_data) {
                     let res = document.getElementById("res_" + pregunta.id_pregunta ).value;  
                     if ((res == '' || res == null) && pregunta.obligatoria) {
@@ -39,21 +41,40 @@ var application = new Vue({
                           validAnswers.push({"id_pregunta":pregunta.id_pregunta,"id_empleado":1,"id_opcion":element.respuesta,"id_encuesta":pregunta.id_encuesta,"respuesta":null,"directa":0});
                         });
                     }  
-                } 
-            });  
+                }  
+                pregunta.options.forEach(opcion => { 
+                    if (opcion.respuesta_extra && document.getElementById(pregunta.id_pregunta + "_" + opcion.id_opcion).checked ) {
+                        let res = document.getElementById( opcion.id_opcion + "_respuesta_extra").value; 
+                        if (res != '' && res .length > 0 ) {
+                            this.setColorLabel(pregunta.id_pregunta,"black"); 
+                        }else{
+                            this.setColorLabel(pregunta.id_pregunta,"red");
+                            other_answer_empty = false;
+                            formValid = false; 
+                        } 
+                        array_answer_extra.push({"id_option": opcion.id_opcion , "value" : res});
+                    }  
+                });  
+            });   
+            
             if (formValid) {
-                await this.completeForm(validAnswers); 
+                await this.completeForm(validAnswers,array_answer_extra); 
             }else{
-                alert("Responde a todas las Preguntas por favor.");   
+                other_answer_empty ? alert("Responde a todas las Preguntas por favor."): alert("Especifica la opción Seleccionada.");   
                 this.btePressed = false;
             } 
         },
-        async completeForm(validAnswers){ 
+        async completeForm(validAnswers,array_answer_extra){ 
             for (let index = 0; index < validAnswers.length; index++) {
                 const respuesta = validAnswers[index];
                 const result = await this.insertAnswer(respuesta); 
                 console.log(result); 
             }  
+            for (let index = 0; index < array_answer_extra.length; index++) {
+                const answer_extra = array_answer_extra[index];
+                const result_answer_extra = await this.insert_answer_extra(answer_extra); 
+                console.log(result_answer_extra); 
+            } 
             const result2 = await this.insertEmpleado_encuesta(validAnswers);  
             console.log(result2);  
             location.href="showPoll.php"; 
@@ -82,6 +103,19 @@ var application = new Vue({
             return response.data;
             })  
         },
+
+        async insert_answer_extra(answer_extra){
+            return axios.post("../../php/bd_answer_survey.php", { 
+                action:'insert_answer_extra'
+                ,answer_extra: answer_extra
+            })
+            .then(function (response) {   
+                return response.data; 
+            })
+            .catch(function (response) {  
+            return response.data;
+            })  
+        },
         setColorLabel(id, color){
             document.getElementById("label_" + id ).style.color = color;
         },
@@ -94,6 +128,7 @@ var application = new Vue({
                 myArray[index]['options'] = result; 
             } 
             this.questions = myArray; 
+            console.log(this.questions);
         },
         seachQuestions:function(id_encuesta){
             return axios.post("../../php/bd_answer_survey.php", { 
