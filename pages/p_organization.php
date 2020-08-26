@@ -39,12 +39,14 @@ require 'header.php';
      <div class="table-responsive">
       <table class="table table-bordered table-striped">
        <tr>
+       <th>ID</th>
         <th>Empresa</th>
         <th>Segmento</th>
         <th>Editar</th>
         <th>Eliminar</th>
        </tr>
        <tr v-for="row in allData_Org">
+       <td>{{ row.id_segmento }}</td>
        <td>{{ row.empresa_nombre }}</td>
         <td>{{ row.nombre }}</td>
         <td><button type="button" name="edit" class="btn btn-primary btn-xs edit" @click="fetchData(row.id_segmento)">Editar</button></td>
