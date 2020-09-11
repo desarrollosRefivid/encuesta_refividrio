@@ -73,7 +73,9 @@
                   <option value='E' >E.PERSONAL CON FACTOR DE RIESGO POR TRASLADO EN TRANSPORTE PÚBLICO (Listado y gráfica)</option>
                   <option value='F' >F.PERSONAL QUE NO HAN CONTESTADO EL INSTRUMENTO </option>
                   <option value='G' >G.PERSONAL QUE YA HAN CONTESTADO EL INSTRUMENTO </option>
-                  <option value='H' >H.RESPUESTAS</option>  
+                  <option value='H' >H.RESPUESTAS</option> 
+                  <option value='I' >I.LISTADO DE PORCENTAJES</option>
+                  <option value='J' >J.LISTADO DE GRAFICA</option>                               
                 </select>  
                 </br>
                 <button type="button" class="btn btn-info float-right"  @click='generateReport()' >Consultar</button>       

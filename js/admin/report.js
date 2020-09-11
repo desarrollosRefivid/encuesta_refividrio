@@ -54,7 +54,9 @@ var report = new Vue({
             if(this.reportSelected  == 'B'){ params += "&nivel=2";      }
             if(this.reportSelected  == 'C'){ params += "&nivel=1";      } 
             if(this.reportSelected  == 'F'){ params += "&realizadas=0"; }
-            if(this.reportSelected  == 'G'){ params += "&realizadas=1"; } 
+            if(this.reportSelected  == 'G'){ params += "&realizadas=1"; }
+            if(this.reportSelected  == 'I'){ params += "&nivel=3";      } 
+            if(this.reportSelected  == 'J'){ params += "&nivel=3";      }  
 
             params += "&tipo_encuesta=" + this.typePoolSelected; //0 = Todos los tipos de encuestas; 1 : Concluidas; 2 : En captura;
             console.log(params);
@@ -71,6 +73,8 @@ var report = new Vue({
                 case 'F':  return 'resultadoEncuesta_1';
                 case 'G': return 'resultadoEncuesta_1';
                 case 'H': return 'resultadoEncuesta';
+                case 'I': return 'Porcentaje_Segmento_Grafica_1';
+                case 'J': return 'Porcentaje_Segmento_Grafica';                                
                 default : return '';   
             }
         },
