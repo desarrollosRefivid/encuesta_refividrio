@@ -54,9 +54,7 @@ var report = new Vue({
             if(this.reportSelected  == 'B'){ params += "&nivel=2";      }
             if(this.reportSelected  == 'C'){ params += "&nivel=1";      } 
             if(this.reportSelected  == 'F'){ params += "&realizadas=0"; }
-            if(this.reportSelected  == 'G'){ params += "&realizadas=1"; }
-            if(this.reportSelected  == 'I'){ params += "&nivel=3";      } 
-            if(this.reportSelected  == 'J'){ params += "&nivel=3";      }  
+            if(this.reportSelected  == 'G'){ params += "&realizadas=1"; } 
 
             params += "&tipo_encuesta=" + this.typePoolSelected; //0 = Todos los tipos de encuestas; 1 : Concluidas; 2 : En captura;
             console.log(params);
