@@ -14,8 +14,8 @@ session_start();
                 WHERE 
                     e.id_encuesta NOT IN (SELECT id_encuesta FROM refividrio.empleado_encuesta WHERE id_empleado = empl.id_empleado )
                     AND seg.id_empresa IN (SELECT id_empresa FROM empresa_encuesta WHERE  e.id_encuesta = id_encuesta)
-                    AND now()::date >= e.validodesde 
-                    AND now()::date <=  e.validohasta
+                    AND now() >= e.validodesde 
+                    AND now() <=  e.validohasta
                     AND e.activo = true
                 ORDER BY e.validodesde";
         $statement = $connect->prepare($query);

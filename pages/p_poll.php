@@ -72,12 +72,12 @@
 
                                   <div class="md-form md-outline input-with-post-icon datepicker">
                                     <label for="example">Válido Desde</label>
-                                    <input type="date" id="copy_validfrom" class="form-control" v-model="copy_validfrom"  />
+                                    <input type="datetime-local" id="copy_validfrom" class="form-control" v-model="copy_validfrom"  />
                                   </div> 
 
                                   <div class="md-form md-outline input-with-post-icon datepicker">
                                     <label for="example">Válido Hasta</label>
-                                    <input type="date" id="copy_validUntil" class="form-control" v-model="copy_validUntil" />
+                                    <input type="datetime-local" id="copy_validUntil" class="form-control" v-model="copy_validUntil" />
                                   </div> 
                                   <br/><br/>
                                   
@@ -119,12 +119,12 @@
                                 </div> 
                                 <div class="md-form md-outline input-with-post-icon datepicker">
                                   <label for="example">Válido Desde</label>
-                                  <input type="date" id="example" class="form-control" v-model="poll_validfrom" placeholder="01-01-2020" />
+                                  <input type="datetime-local" id="example" class="form-control" v-model="poll_validfrom" placeholder="01-01-2020" />
                                 </div> 
 
                                 <div class="md-form md-outline input-with-post-icon datepicker">
                                   <label for="example">Válido Hasta</label>
-                                  <input type="date" id="example" class="form-control" v-model="poll_validUntil" placeholder="01-01-2020" />
+                                  <input type="datetime-local" id="example" class="form-control" v-model="poll_validUntil" placeholder="01-01-2020" />
                                 </div> 
 
                                 <div class="custom-control custom-checkbox">

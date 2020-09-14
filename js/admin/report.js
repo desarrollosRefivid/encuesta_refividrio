@@ -4,8 +4,7 @@ var report = new Vue({
         empleados: "",
         companys : "",
         segments: "",
-        pools: "",
-
+        pools: "", 
         empleadoSelected: 0,
         empresaSelected: 0,
         segmentSelected: 0,

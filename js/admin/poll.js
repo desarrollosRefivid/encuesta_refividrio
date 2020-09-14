@@ -112,18 +112,30 @@ var application_poll = new Vue({
           axios.post('../php/bd_poll.php', {
             action:'fetchSingle',
             id:id
-          }).then(function(response){
-            console.log(response);
+          }).then(function(response){  
             application_poll.poll_name = response.data.poll_name;
             application_poll.poll_help = response.data.poll_help;
-            application_poll.poll_validfrom = response.data.poll_validfrom;
-            application_poll.poll_validUntil = response.data.poll_validUntil; 
+            // application_poll.poll_validfrom =  response.data.poll_validfrom;
+            //application_poll.poll_validUntil =  response.data.poll_validUntil; 
+            application_poll.poll_validfrom = application_poll.formatDateTime(response.data.poll_validfrom);
+            application_poll.poll_validUntil = application_poll.formatDateTime(response.data.poll_validUntil);
             application_poll.checked = response.data.checked
             application_poll.hiddenId = response.data.id;
             application_poll.myModelPoll = true;
             application_poll.actionButton = 'Actualizar';
             application_poll.dynamicTitle = 'Editar Encuesta';  
           });
+        },
+        formatDateTime(dateIn){
+          dateIn = dateIn.toLocaleString("sv-SE", {
+            year: "numeric",
+            month: "2-digit",
+            day: "2-digit",
+            hour: "2-digit",
+            minute: "2-digit",
+            second: "2-digit"
+          }).replace(" ", "T") 
+          return dateIn.substring(0,19)  
         },
         deleteData:async function(id){ 
           if(confirm("¿Seguro que deseas eliminar esta encuesta?"))
@@ -139,6 +151,7 @@ var application_poll = new Vue({
           } 
         } ,
         showCopyPool(id,name){  
+          console.log(this.getDate());
           this.copy_name = name + " (Copia)"; this.copy_validfrom = this.getDate();this.copy_validUntil = this.getDate(); this.id_copy = id;
           this.isDisabledBTEcopy = false;
           this.modalCopy = true;  
@@ -165,11 +178,25 @@ var application_poll = new Vue({
           n =  new Date(); 
           y = n.getFullYear(); 
           m = n.getMonth() + 1;
+
+          minute = n.getMinutes();
+          hour = n.getHours(); 
           if (m < 10) {   m = '0' + m;  } 
           d = n.getDate(); 
           if (d < 10) {  d = '0' + m;  }
-          return y + "-" + m + "-" + d;
+          return y + "-" + m + "-" + d + " " +hour+ ":" +minute+":00" ;
         },
+        formatDate(date) {
+          var hours = date.getHours();
+          var minutes = date.getMinutes();
+          var ampm = hours >= 12 ? 'pm' : 'am';
+          hours = hours % 12;
+          hours = hours ? hours : 12; // the hour '0' should be '12'
+          minutes = minutes < 10 ? '0'+minutes : minutes;
+          var strTime = hours + ':' + minutes + ' ' ;//+ ampm;
+          return (date.getMonth()+1) + "-" + date.getDate() + "-" + date.getFullYear() + "  " + strTime;
+        }  
+       ,
         async asingCompany(poll){ 
           this.isDisabledSC = false;
           this.pollSelected = poll;

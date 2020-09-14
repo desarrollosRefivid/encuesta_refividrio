@@ -103,8 +103,8 @@ require_once "postgres.php";
             CASE WHEN  (CASE WHEN COUNT(*) > 0 THEN  true ELSE  false  END) = false THEN
                 CASE WHEN (SELECT COUNT(*) FROM encuesta 
                                 WHERE id_encuesta = ".$received_data->id_encuesta."  AND
-                                now()::date >=  validodesde 
-                                AND now()::date <=  validohasta
+                                now() >=  validodesde 
+                                AND now() <=  validohasta
                                 AND  activo = true 
                         ) > 0 THEN  false ELSE   true END    
             ELSE 

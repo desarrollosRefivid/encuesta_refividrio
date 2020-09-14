@@ -67,20 +67,27 @@ if ($received_data->action == 'fetchSingle') {
 
 session_start();
 if ($received_data->action == 'copy') {
+
+    $validUntil = new DateTime($received_data->validUntil);
+   
+    $validfrom = new DateTime($received_data->validfrom);
+  
     $query = "";
     try {
-        $query = "SELECT refividrio.copy_poll('" . $received_data->name . "' , " . $received_data->id_encuesta . " , " . $_SESSION['id_empleado'] .
-        ",'" . $received_data->validfrom . "' , '" . $received_data->validUntil . "'  ) as results";
-    
+        $query = "SELECT refividrio.copy_poll('" . $received_data->name . "' , " . $received_data->id_encuesta . " , "
+         . $_SESSION['id_empleado'] .
+        ",'" .   $validfrom->format('Y-m-d H:i:s') . "'::timestamp with time zone , '" .
+        $validUntil->format('Y-m-d H:i:s') . "'::timestamp with time zone  ) as results";
+     
        $statement = $connect->prepare($query);
        $statement->execute();
        $result = $statement->fetchAll();
        foreach ($result as $row) {
            $data['results'] = $row['results']; 
-       }
+       } 
        echo json_encode($data);
     } catch (\Throwable $th) {
-        //throw $th;
+        //throw $th; 
         echo  $th . "  "  ;
     }
    
@@ -145,12 +152,12 @@ if ($received_data->action == 'fetchByType') {
     WHERE  
 	CASE WHEN " . $received_data->typePoolSelected . "= 2 THEN 
 		  (   activo = true 
-			  AND now()::date >= validodesde 
-              AND now()::date <= validohasta  )
+			  AND now()  >= validodesde 
+              AND now()  <= validohasta  )
 	WHEN " . $received_data->typePoolSelected . "= 0 THEN
 		true
 	ELSE 
-      	(  now()::date > validohasta )
+      	(  now() > validohasta )
     END 
     
     ORDER BY nombre
