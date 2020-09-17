@@ -15,6 +15,8 @@ try {
 
         mail($to_email, $subject, $message, implode("\r\n", $headers));
         echo "Sen email"
+    }else{
+        echo "Else email"
     }
    
 } catch (\Throwable $th) {
