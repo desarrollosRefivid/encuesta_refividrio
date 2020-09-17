@@ -14,7 +14,9 @@ try {
         $headers[] = 'From: Encuestas Refividrio.';
 
         mail($to_email, $subject, $message, implode("\r\n", $headers));
+        echo "Sen email"
     }
+   
 } catch (\Throwable $th) {
    echo $th;
 }
