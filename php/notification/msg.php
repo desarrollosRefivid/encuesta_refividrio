@@ -177,9 +177,9 @@ class msg
 							<table role="presentation" cellspacing="0" cellpadding="0" border="0" width="100%">
 							<tr>
 								<td class="bg_dark email-section" style="text-align:center;">
-									<div class="heading-section heading-section-white">
-										<span class="subheading">Notificaciones refividrio</span><br/>
-										<!--<h2>Titulo</h2> --> 
+									<div class="heading-section heading-section-white"><br/>
+									<!--<span class="subheading">Notificaciones refividrio</span>
+										<h2>Titulo</h2> --> 
 										<img src="https://dev.refividrio.com.mx/encuesta_refividrio/img/logo.png" width="200px" /> 
 									<p>Este Correo es una Notificación de refividrio no es necesaria una respuesta.</p>
 									</div>
@@ -188,7 +188,7 @@ class msg
 							<tr>
 								<td class="bg_light email-section">
 									<div class="heading-section" style="text-align: center; padding: 0 30px;">
-										<span class="subheading">Sistemas de Encuestas.</span>
+										 
 									<h2>'. $mensaje .'</h2>
 									<p>Información de Encuesta.</p>
 									</div> 
