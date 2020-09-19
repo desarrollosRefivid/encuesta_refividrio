@@ -37,6 +37,10 @@
         <label>ID: {{notificationSelected.id_notification}}</label> 
       </div> 
       <div class="form-group">
+        <label>Enviar Correo</label> 
+        <input type='checkbox' v-model="sendEmail"  /> 
+      </div>  
+      <div class="form-group">
         <label>Mensaje</label>
         <input type="text" class="form-control" v-model="notificationSelected.msg" />
       </div> 
@@ -62,7 +66,7 @@
           </div> 
         </div> 
       </div> 
-      <div class="row">
+      <div class="row"  style="height: 450px;">
         <div class="col">
           <div class="table-responsive" style=" max-height: 400px; overflow-y: auto;">
             <table class="table table-bordered table-striped"  >
@@ -92,8 +96,11 @@
           </div>
         </div> 
       </div>
-      <input type="button" class="btn btn-danger btn-xs" @click="isCrud=false" value="Cancelar" />
-      <input type="button" class="btn btn-success btn-xs" @click="save()" value="Guardar" /> 
+      <!-- <input type="button" class="btn btn-danger btn-xs" @click="isCrud=false" value="Cancelar" /> -->
+      <!-- <input type="button" class="btn btn-success btn-xs" @click="save()" value="Enviar" />  -->
+      <button @click="isCrud=false" class="btn btn-danger btn-xs" ><img src="../img/cancelar.png" width="25px" />Cancelar</button> 
+      <button @click="save()" class="btn btn-info btn-xs" ><img src="../img/send.png" width="15%" />Enviar</button>
+      <div  style="height: 450px;"></div>
    </div>
   </div>
 </div>

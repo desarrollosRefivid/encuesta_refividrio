@@ -106,9 +106,20 @@ if ($received_data->action == 'deleteData') {
         'message' => 'Data Deleteted'
     ); 
     echo json_encode($output); 
-} 
-
-
+}  
+if ($received_data->action == 'getUsersEmail') {
+    $query = "SELECT id_empleado,CONCAT(nombre,' ',materno,' ',paterno)As epleado,correo , nt.msg,nt.description
+                FROM refividrio.empleado e
+                INNER JOIN notification_detail ntd ON e.id_empleado = ntd.id_employee
+                INNER JOIN notification nt ON nt.id_notification = ntd.id_notification
+                WHERE correo <> '' AND correo IS NOT NULL AND ntd.id_notification=". $received_data->id_notifiation;  
+    $statement = $connect->prepare($query);
+    $statement->execute();
+    while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+        $data[] = $row; 
+    }
+    echo json_encode($data);
+}
 if ($received_data->action == 'getAllData') { 
     $dataEmpresa = array();
     $query = " SELECT empresa_nombre As value,id_empresa As id FROM refividrio.empresa ORDER BY value ;"; 

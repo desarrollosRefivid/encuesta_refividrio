@@ -15,7 +15,8 @@ var notification = new Vue({
         countNotifications: "",  
         to_notify: [],
         data_to_filter:"",
-        filter_value:"" 
+        filter_value:"",
+        sendEmail: true 
     },
     methods:{
     newNotification() {   
@@ -37,7 +38,7 @@ var notification = new Vue({
         const responce =  await axios.post('../php/notification/bd_notification.php', {  action:'getAllData' })
         .then(function(response){  return response.data;    });  
         this.allDataFilter = responce;
-        console.log(responce);
+        // console.log(responce);
     },
     getDataFilter(){ 
         switch (this.search_by) {
@@ -88,31 +89,42 @@ var notification = new Vue({
         });
         this.isCrud=true;
     },  
-    save(){ 
+    async save(){ 
         if (this.notificationSelected.id_notification > 0) {
-            this.updateData();
+            await this.updateData();
         } else {
-            this.createData();
+           await this.createData();
         }
         this.data_to_filter = [];
         this.to_notify = [];
         this.search_by = 'all';
         this.filter_value = '';
     } ,
-    async createData(){ 
-        const responce =  await axios.post('../php/notification/bd_notification.php', {  action:'insertData', 
-                                data: this.notificationSelected })
-                         .then(function(response){  return response.data;});   
-        if (responce.message == "Data Inserted") { 
+    async createData(){  
+        const responce_nt =  await axios.post('../php/notification/bd_notification.php', {  action:'insertData', data: this.notificationSelected })
+                            .then(function(response){  return response.data;});   
+        if (responce_nt.message == "Data Inserted") { 
+            const responces_nt_detalil = await axios.post('../php/notification/bd_notification.php', { action:'insertNotification',  id_notification: responce_nt.id 
+                                        ,filter: this.to_notify ,type: this.search_by })
+                                        .then(function(response){  return response.data;});  
+            if (responce_nt.id > 0 && this.sendEmail) {
+                await this.send_Email(responce_nt.id);
+            }   
             this.fetchAllNotifications();  
             this.isCrud=false;
         }  
-        const responces =  await axios.post('../php/notification/bd_notification.php', {  
-                             action:'insertNotification',  
-                             id_notification: responce.id,
-                             filter: this.to_notify
-                            ,type: this.search_by })
-        .then(function(response){  return response.data;});    
+     
+    },
+    async send_Email(id_notifiation){ 
+        const responce_email =  await axios.post('../php/notification/bd_notification.php', {  action:'getUsersEmail',  id_notifiation: id_notifiation})
+        .then(function(response){    return response.data;    }); 
+        console.log(responce_email);
+        for (let index = 0; index < responce_email.length; index++) {
+            const element = responce_email[index];
+            const result_email =  await axios.post('../php/notification/send_email.php', { data : element,subject: element.msg })
+            .then(function(response){ return response.data;    });
+            console.log(result_email);
+        }
     },
     async updateData(){ 
         const responce =  await axios.post('../php/notification/bd_notification.php', {  action:'updateData', 

@@ -1,26 +1,111 @@
 <?php
+session_start();
+$received_data = json_decode(file_get_contents("php://input"));
+require '../../lib/PHPMailer/src/Exception.php';
+require '../../lib/PHPMailer/src/PHPMailer.php';
+require '../../lib/PHPMailer/src/SMTP.php';  
+require_once '../../lib/html2pdf/autoload.php';
 
-try {
-    $msg = $_POST['msg'];
-    $para = $_POST['correo'];
-    $title = $_POST['title'];
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
+use Spipu\Html2Pdf\Html2Pdf;
+use Spipu\Html2Pdf\Exception\Html2PdfException;
+use Spipu\Html2Pdf\Exception\ExceptionFormatter;
+ 
+if (isset($received_data->data->correo)) {
+    $objEmail =  new Email("<h1>".$received_data->data->msg."</h1>" . "<h2>".$received_data->data->description."</h2>"
+                            ,$received_data->subject
+                            ,$received_data->data->correo
+                            ,$received_data->data->epleado);
+    if ($objEmail->sendEmail() == false) {
+        echo "ERROR:" . $objEmail->get_descriptionError();
+    }else {
+        echo "Enviado.";
+    }  
+}else{
+    echo "Error, Correo Inválido.";
+    var_dump($received_data);
+} 
 
-    if (isset($msg) && isset($para)) {
-        $message = "<p>$msg</p>";
-        $to_email = $para;
-        $subject = $title;
-        $headers[] = 'MIME-Version: 1.0';
-        $headers[] = 'Content-type: text/html; charset=UTF-8';
-        $headers[] = 'From: Encuestas Refividrio.';
+class Email 
+{
+    private $body;
+    private $subject; 
+    private $for_mail;
+    private $for_name;
+    private $descriptionError;
+    private $mail; 
 
-        mail($to_email, $subject, $message, implode("\r\n", $headers));
-        echo "Sen email";
-    }else{
-        echo "Else email";
+    public function __construct($body, $subject, $for_mail,$for_name){
+        $this->body = $body;
+        $this->subject = $subject;
+        $this->for_mail = $for_mail;
+        $this->for_name = $for_name;
+        $this->descriptionError = "";
+        $this->mail = new PHPMailer(true);
     }
-   
-} catch (\Throwable $th) {
-   echo $th;
+    public function __construct0(){ 
+        $this->descriptionError = "";
+        $this->mail = new PHPMailer(true);
+    }  
+    public function get_body(){ 
+        return $this->body;
+    }
+    public function set_body($body){ 
+        $this->body = $body;
+    } 
+    public function get_subject(){ 
+        return $this->subject;
+    }  
+    public function set_subject($subject){ 
+        $this->subject = $subject;
+    } 
+    public function get_for_mail(){ 
+        return $this->for_mail;
+    }  
+    public function set_for_mail($for_mail){ 
+        $this->for_mail = $for_mail;
+    }   
+    public function get_for_name(){ 
+        return $this->for_name;
+    }  
+    public function set_for_name($for_name){ 
+        $this->for_name = $for_name;
+    }  
+    public function get_mail(){ 
+        return $this->mail;
+    }  
+    public function set_mail($mail){ 
+        $this->mail = $mail;
+    } 
+    public function get_descriptionError(){ 
+        return $this->descriptionError;
+    }  
+    public function sendEmail(){
+        try {
+            require 'msg.php';
+            // $this->body 
+            $msg = new msg();
+            $this->mail->CharSet = 'UTF-8';
+            $this->body = $msg->get_msg($this->body); 
+            $this->mail->isHTML(true);
+            $this->mail->IsSMTP();
+            $this->mail->Host = 'mail.refividrio.com.mx';
+            $this->mail->SMTPSecure = 'ssl';
+            $this->mail->Port = 465;
+            $this->mail->SMTPDebug = 0;
+            $this->mail->SMTPAuth = true;
+            $this->mail->Username =  'desarrollo2@refividrio.com.mx';
+            $this->mail->Password = 'desarrollos$123';
+            $this->mail->SetFrom('desarrollo2@refividrio.com.mx' , "Refividrio");
+            $this->mail->Subject = $this->subject; 
+            $this->mail->MsgHTML($this->body); 
+            $this->mail->AddAddress($this->for_mail,$this->for_name ); 
+            $this->mail->send();
+            return true;
+        } catch (Exception $exc) {
+            $this->descriptionError = $exc;
+            return false;
+        } 
+    }    
 }
-
-
