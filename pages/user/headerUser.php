@@ -34,6 +34,9 @@
       <li class="nav-item active">
         <a class="nav-link" href="showPoll.php">Ver Encuestas <span class="sr-only">(current)</span></a>
       </li>
+      <li class="nav-item active">
+          <a class="nav-link" href="../../pages/user/account.php">Mi cuenta<span class="sr-only">(current)</span></a>
+      </li> 
   <div id='chagePassword_DIV'>     
     <li class="nav-item active">
       <button @click="showModal()" style="background:none;border:none;" > <a class="nav-link"   >Cambiar Contraseña<span class="sr-only">(current)</span></a></button>
@@ -77,9 +80,7 @@
       </div>
     </div>
 
-    <li class="nav-item active">
-          <a class="nav-link" href="../../pages/user/account.php">Mi cuenta<span class="sr-only">(current)</span></a>
-    </li>    
+       
  
     <li class="nav-item active">        <!-- notificaciones -->
       <div id="notification">  
