@@ -12,7 +12,7 @@ var account = new Vue({
                 if (update_response.message == 'data update') {
                     this.fetchData(); 
                     alert("Datos actualizados."); 
-                } else{
+                }else{
                     this.fetchData(); 
                     alert("Ocurrio un error:" + update_response.message);
                 }

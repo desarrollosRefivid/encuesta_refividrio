@@ -4,8 +4,7 @@
     <h3>Perfil</h3> 
 
       <div class="form-group">
-        <label>ID: {{account.id_empleado}}</label> 
-      
+        <label>ID: {{account.id_empleado}}</label>  
       </div>  
 
       <div class="form-group">
@@ -68,8 +67,7 @@
  
       <div class="form-group">
          <button @click="save()" class="btn btn-info btn-xs" ><img src="../../img/send.png" width="15%" />Guardar</button>
-      </div> 
-    
+      </div>  
     </div> 
 </div>
 <script type="text/javascript" src="../../js/user/account.js"></script>
