@@ -71,7 +71,8 @@ var report = new Vue({
                 case 'G': return 'resultadoEncuesta_1';
                 case 'H': return 'resultadoEncuesta';
                 case 'I': return 'Porcentaje_Segmento_Grafica_1';
-                case 'J': return 'Porcentaje_Segmento_Grafica';                                
+                case 'J': return 'Porcentaje_Segmento_Grafica';    
+                case 'K': return 'resultadoEncuesta_3';                                
                 default : return '';   
             }
         },

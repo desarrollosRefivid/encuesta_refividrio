@@ -75,7 +75,8 @@
                   <option value='G' >G.PERSONAL QUE YA HAN CONTESTADO EL INSTRUMENTO </option>
                   <option value='H' >H.RESPUESTAS</option> 
                   <option value='I' >I.LISTADO DE PORCENTAJES</option>
-                  <option value='J' >J.LISTADO DE GRÁFICA</option>                               
+                  <option value='J' >J.LISTADO DE GRÁFICA</option>   
+                  <option value='K' >K.MEDIDAS DE PREVENCIÓN A VALIDAR POR ÁREA</option>                               
                 </select>  
                 </br>
                 <button type="button" class="btn btn-info float-right"  @click='generateReport()' >Consultar</button>       

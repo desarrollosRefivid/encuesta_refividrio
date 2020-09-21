@@ -6,7 +6,7 @@
         $nombre = $_SESSION['nombre']. ' '. $_SESSION['paterno'] . ' '. $_SESSION['materno'];  
       }else{  header('location: ../');  } 
     }else{ header('location: ../'); } 
-?> 
+?>  
 
 <head>
   <title>Refividrio</title>
@@ -76,6 +76,10 @@
         </transition>
       </div>
     </div>
+
+    <li class="nav-item active">
+          <a class="nav-link" href="../../pages/user/account.php">Mi cuenta<span class="sr-only">(current)</span></a>
+    </li>    
  
     <li class="nav-item active">        <!-- notificaciones -->
       <div id="notification">  
@@ -94,7 +98,8 @@
                 </div>
             </div>
           </div>          
-        </div>                          <!-- notificaciones -->
+        </div> 
+                           <!-- notificaciones -->
 
         <div v-if="modalNotification" >  <!-- Modal notificaciones -->
           <transition name="model" >
@@ -118,11 +123,10 @@
               </div>
             </div>
           </transition>
-        </div>                          <!-- Modal notificaciones -->
-  
+        </div>         
       </div>   
     </li> 
- 
+    
     <li class="nav-item active">
       <a class="nav-link" href="../logout.php">Salir <span class="sr-only">(current)</span></a>
     </li> 
